@@ -156,3 +156,8 @@ cython_debug/
 datasets
 workdir
 *.npy
+data_preprocess/download_from_tardis
+data_preprocess/preprocess/concat_clean
+data_preprocess/preprocess/create_features/ETHUSDT
+data_preprocess/preprocess/merge/ETHUSDT
+test.ipynb

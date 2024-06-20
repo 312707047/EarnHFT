@@ -33,3 +33,7 @@ do
   
   current_seconds=$(( next_seconds + 1 ))
 done
+
+# 執行 Python 腳本
+echo "Executing: python concat_and_save.py $symbols $start_date $end_date"
+python concat_and_save.py $symbols $start_date $end_date

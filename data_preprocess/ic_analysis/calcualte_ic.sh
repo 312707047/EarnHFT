@@ -1,18 +1,21 @@
-nohup python ic_analysis/calculate_ic.py \
-    --data_path preprocess/merge/BTCTUSD/2023-03-30-2023-05-15/df.feather \
-    >ic_analysis/log/TUSD_merge.log 2>&1 &
+#!/bin/bash
 
+# 設定資料目錄和日誌檔案目錄
+DATA_DIR="preprocess/merge/ETHUSDT"
+LOG_DIR="ic_analysis/log"
+SCRIPT="ic_analysis/calculate_ic.py"
 
-nohup python ic_analysis/calculate_ic.py \
-    --data_path preprocess/merge/BTCUSDT/2022-09-01-2022-10-15/df.feather \
-    >ic_analysis/log/USDT_merge.log 2>&1 &
+# 建立日誌檔案目錄（若尚未存在）
+mkdir -p $LOG_DIR
 
-
-nohup python ic_analysis/calculate_ic.py \
-    --data_path preprocess/merge/ETHUSDT/2022-05-01-2022-06-15/df.feather \
-    >ic_analysis/log/ETHUSDT_merge.log 2>&1 &
-
-
-nohup python ic_analysis/calculate_ic.py \
-    --data_path preprocess/merge/GALAUSDT/2022-07-01-2022-08-15/df.feather \
-    >ic_analysis/log/GALAUSDT_merge.log 2>&1 &
+# 遍歷資料目錄下的所有子目錄
+for SUBDIR in $DATA_DIR/*; do
+    # 確認子目錄存在 df.feather 檔案
+    if [ -f "$SUBDIR/df.feather" ]; then
+        # 提取子目錄名稱以用於日誌檔案名稱
+        DIR_NAME=$(basename $SUBDIR)
+        
+        # 執行 Python 腳本並將輸出重定向到相應的日誌檔案
+        nohup python $SCRIPT --data_path "$SUBDIR/df.feather" > "$LOG_DIR/ETHUSDT_${DIR_NAME}.log" 2>&1 &
+    fi
+done

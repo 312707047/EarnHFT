@@ -77,3 +77,7 @@ It will create a `df.feather` which will be used in the
 
 ### IC Analysis
 Run `bash ic_analysis/calcualte_ic.sh` to calculate the correlation between the future price movement and the select proper features as the a part of the state(context described in this [paper](https://arxiv.org/pdf/2307.11685.pdf)). We create 2 sets of features:`ic_analysis/feature/minitue_feature.npy` and `ic_analysis/feature/second_feature.npy` as the input of high-level and low-level agents respectively. The selection critieria is based on the future price movement scale, where the low-level agents use the future one second price movement and the high-level agent uses the future one minute price movement.
+
+
+### 個人筆記
+在這個資料夾層級執行 bash 檔
