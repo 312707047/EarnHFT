@@ -14,7 +14,7 @@ sys.path.append(".")
 from tool.demonstration import making_multi_level_dp_demonstration, make_q_table, get_dp_action_from_qtable, make_q_table_reward
 import math
 
-tech_indicator_list = np.load("data/feature/second_feature.npy").tolist()
+tech_indicator_list = np.load("/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/BTCUSDT/2023-08-10_2023-10-13/second_feature.npy").tolist()
 # tech_indicator_list=0
 transcation_cost = 0.00
 back_time_length = 1

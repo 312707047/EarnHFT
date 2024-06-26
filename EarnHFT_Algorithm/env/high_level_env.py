@@ -22,8 +22,8 @@ import math
 from env.low_level_env import Testing_env
 from model.net import Qnet
 
-high_level_tech_indicator_list = np.load("data/feature/minitue_feature.npy").tolist()
-low_level_tech_indicator_list = np.load("data/feature/second_feature.npy").tolist()
+high_level_tech_indicator_list = np.load("/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/BTCUSDT/2023-08-10_2023-10-13/minitue_feature.npy").tolist()
+low_level_tech_indicator_list = np.load("/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/BTCUSDT/2023-08-10_2023-10-13/second_feature.npy").tolist()
 
 # tech_indicator_list=0
 transcation_cost = 0.00

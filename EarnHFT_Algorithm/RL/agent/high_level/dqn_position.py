@@ -56,8 +56,10 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--back_time_length", type=int, default=1, 
-    help="the length of the holding period"
+    "--back_time_length",
+    type=int,
+    default=1,
+    help="the length of the holding period",
 )
 parser.add_argument(
     "--seed",
@@ -204,7 +206,7 @@ class DQN(object):
         self.writer = SummaryWriter(self.log_path)
 
         # trading setting
-        assert args.dataset_name in ["BTCUSDT", "ETHUSDT", "GALAUSDT","BTCTUSD"]
+        assert args.dataset_name in ["BTCUSDT", "ETHUSDT", "GALAUSDT", "BTCTUSD"]
         if args.dataset_name == "BTCUSDT":
             model_path_list_dict = {
                 0: [
@@ -370,10 +372,10 @@ class DQN(object):
 
         self.train_data_path = args.train_data_path
         self.high_level_tech_indicator_list = np.load(
-            "data/feature/minitue_feature.npy"
+            "/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/BTCUSDT/2023-08-10_2023-10-13/minitue_feature.npy"
         ).tolist()
         self.low_level_tech_indicator_list = np.load(
-            "data/feature/second_feature.npy"
+            "/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/BTCUSDT/2023-08-10_2023-10-13/second_feature.npy"
         ).tolist()
         self.n_state = len(self.high_level_tech_indicator_list)
         self.update_counter = 0
@@ -406,7 +408,6 @@ class DQN(object):
         self.target_net = copy.deepcopy(self.eval_net)
         self.optimizer = torch.optim.Adam(self.eval_net.parameters(), lr=self.lr)
         self.loss_func = nn.MSELoss()
-        
 
     def update(
         self,
@@ -426,9 +427,12 @@ class DQN(object):
             info["previous_action"].float().unsqueeze(1),
         ).detach()
         # since investigating is a open end problem, we do not use the done here to update
-        q_target = rewards + torch.max(q_next, 1)[0].view(self.batch_size, 1) * (
-            1 - dones
-        )*self.gamma
+        q_target = (
+            rewards
+            + torch.max(q_next, 1)[0].view(self.batch_size, 1)
+            * (1 - dones)
+            * self.gamma
+        )
 
         td_error = self.loss_func(q_eval, q_target)
 

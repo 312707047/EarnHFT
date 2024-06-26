@@ -37,7 +37,7 @@ def get_best_model(label_name,initial_position,root_path=args.root_path):
         coffient_list.remove("potential_model")
     result_dict = {}
     for coffient in coffient_list:
-        coffient_path = os.path.join(root_path, coffient, "seed_12345")
+        coffient_path = os.path.join(root_path, coffient, 'seed_12345')
         epoch_list = os.listdir(coffient_path)
         epoch_list.remove("log")
         sort_list(epoch_list)

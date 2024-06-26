@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function getnextdir_1(){
     counter=0
     for element in `ls $1 | sort -t '_' -k2 -n`
@@ -11,18 +13,19 @@ function getnextdir_1(){
         elif [ $((counter % 4)) -eq 1 ] ;then
             cuda_number=1
         elif [ $((counter % 4)) -eq 2 ] ;then
-            cuda_number=2
+            cuda_number=0
         else 
-            cuda_number=3
+            cuda_number=1
         fi
         echo $counter
         echo $epoch
         echo $element
 
         target_path=$1"/"$element
+        echo $target_path
         log_filename="log/pick/BTCUSDT/beta_-10/position_0_$element.log"
-        CUDA_VISIBLE_DEVICES=$cuda_number nohup python RL/agent/low_level/test_ddqn.py \
-        --test_path $target_path --initial_action 0 --test_df_path data/BTCUSDT/valid  \
+        CUDA_VISIBLE_DEVICES=$cuda_number python RL/agent/low_level/test_ddqn.py \
+        --test_path $target_path --initial_action 0 --test_df_path /mnt/sda1/novis/Projects/EarnHFT/data_preprocess/preprocess/merge/BTCUSDT/2023-08-10-2023-10-13/valid  \
         >$log_filename 2>&1 &
         last_pid=$!
         counter=$((counter + 1))
@@ -51,9 +54,9 @@ function getnextdir_2(){
         elif [ $((counter % 4)) -eq 1 ] ;then
             cuda_number=1
         elif [ $((counter % 4)) -eq 2 ] ;then
-            cuda_number=2
+            cuda_number=0
         else 
-            cuda_number=3
+            cuda_number=1
         fi
         echo $counter
         echo $epoch
@@ -62,7 +65,7 @@ function getnextdir_2(){
         target_path=$1"/"$element
         log_filename="log/pick/BTCUSDT/beta_-10/position_1_$element.log"
         CUDA_VISIBLE_DEVICES=$cuda_number nohup python RL/agent/low_level/test_ddqn.py \
-        --test_path $target_path --initial_action 1 --test_df_path data/BTCUSDT/valid  \
+        --test_path $target_path --initial_action 1 --test_df_path /mnt/sda1/novis/Projects/EarnHFT/data_preprocess/preprocess/merge/BTCUSDT/2023-08-10-2023-10-13/valid \
         >$log_filename 2>&1 &
         last_pid=$!
         counter=$((counter + 1))
@@ -88,9 +91,9 @@ function getnextdir_3(){
         elif [ $((counter % 4)) -eq 1 ] ;then
             cuda_number=1
         elif [ $((counter % 4)) -eq 2 ] ;then
-            cuda_number=2
+            cuda_number=0
         else 
-            cuda_number=3
+            cuda_number=1
         fi
         echo $counter
         echo $epoch
@@ -99,7 +102,7 @@ function getnextdir_3(){
         target_path=$1"/"$element
         log_filename="log/pick/BTCUSDT/beta_-10/position_2_$element.log"
         CUDA_VISIBLE_DEVICES=$cuda_number nohup python RL/agent/low_level/test_ddqn.py \
-        --test_path $target_path --initial_action 2 --test_df_path data/BTCUSDT/valid  \
+        --test_path $target_path --initial_action 2 --test_df_path /mnt/sda1/novis/Projects/EarnHFT/data_preprocess/preprocess/merge/BTCUSDT/2023-08-10-2023-10-13/valid \
         >$log_filename 2>&1 &
         last_pid=$!
         counter=$((counter + 1))
@@ -124,9 +127,9 @@ function getnextdir_4(){
         elif [ $((counter % 4)) -eq 1 ] ;then
             cuda_number=1
         elif [ $((counter % 4)) -eq 2 ] ;then
-            cuda_number=2
+            cuda_number=0
         else 
-            cuda_number=3
+            cuda_number=1
         fi
         echo $counter
         echo $epoch
@@ -135,7 +138,7 @@ function getnextdir_4(){
         target_path=$1"/"$element
         log_filename="log/pick/BTCUSDT/beta_-10/position_3_$element.log"
         CUDA_VISIBLE_DEVICES=$cuda_number nohup python RL/agent/low_level/test_ddqn.py \
-        --test_path $target_path --initial_action 3 --test_df_path data/BTCUSDT/valid  \
+        --test_path $target_path --initial_action 3 --test_df_path /mnt/sda1/novis/Projects/EarnHFT/data_preprocess/preprocess/merge/BTCUSDT/2023-08-10-2023-10-13/valid \
         >$log_filename 2>&1 &
         last_pid=$!
         counter=$((counter + 1))
@@ -160,9 +163,9 @@ function getnextdir_5(){
         elif [ $((counter % 4)) -eq 1 ] ;then
             cuda_number=1
         elif [ $((counter % 4)) -eq 2 ] ;then
-            cuda_number=2
+            cuda_number=0
         else 
-            cuda_number=3
+            cuda_number=1
         fi
         echo $counter
         echo $epoch
@@ -171,7 +174,7 @@ function getnextdir_5(){
         target_path=$1"/"$element
         log_filename="log/pick/BTCUSDT/beta_-10/position_4_$element.log"
         CUDA_VISIBLE_DEVICES=$cuda_number nohup python RL/agent/low_level/test_ddqn.py \
-        --test_path $target_path --initial_action 4 --test_df_path data/BTCUSDT/valid  \
+        --test_path $target_path --initial_action 4 --test_df_path /mnt/sda1/novis/Projects/EarnHFT/data_preprocess/preprocess/merge/BTCUSDT/2023-08-10-2023-10-13/valid \
         >$log_filename 2>&1 &
         last_pid=$!
         counter=$((counter + 1))

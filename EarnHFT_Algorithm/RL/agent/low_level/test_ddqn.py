@@ -86,14 +86,14 @@ class trader(object):
         self.transcation_cost = args.transcation_cost
         self.back_time_length = args.back_time_length
         self.reward_scale = args.reward_scale
-        self.tech_indicator_list = np.load("data/feature/second_feature.npy").tolist()
+        self.tech_indicator_list = np.load("/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/BTCUSDT/2023-08-10_2023-10-13/second_feature.npy").tolist()
         self.initial_action=args.initial_action
         #network
         self.test_path=args.test_path
         # pattern = r'hidden_nodes_(\d+)'
         # match = re.search(pattern, self.test_path)
         self.hidden_nodes = 128
-        self.input_dim=len(np.load("data/feature/second_feature.npy",allow_pickle=True))
+        self.input_dim=len(np.load("/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/BTCUSDT/2023-08-10_2023-10-13/second_feature.npy",allow_pickle=True))
   
         self.eval_net = Qnet(int(self.input_dim),
                              int(self.action_dim), int(self.hidden_nodes)).to(

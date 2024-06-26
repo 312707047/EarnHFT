@@ -76,14 +76,14 @@ parser.add_argument(
 parser.add_argument(
     "--valid_data_path",
     type=str,
-    default="data/BTCUSDT/valid.feather",
+    default="/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/preprocess/merge/BTCUSDT/2023-08-10-2023-10-13/valid.feather",
     help="the number of hidden_nodes",
 )
 
 parser.add_argument(
     "--test_data_path",
     type=str,
-    default="data/BTCUSDT/test.feather",
+    default="/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/preprocess/merge/BTCUSDT/2023-08-10-2023-10-13/test.feather",
     help="the number of hidden_nodes",
 )
 
@@ -98,7 +98,7 @@ class trader(object):
     def __init__(self, args) -> None:
         self.test_path=args.test_path
         self.device = "cpu"
-
+        print("init trader")
         
 
         # trading setting
@@ -265,10 +265,10 @@ class trader(object):
         # RL setting
 
         self.high_level_tech_indicator_list = np.load(
-            "data/feature/minitue_feature.npy"
+            f"/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/{args.dataset_name}/2023-08-10_2023-10-13/minitue_feature.npy"
         ).tolist()
         self.low_level_tech_indicator_list = np.load(
-            "data/feature/second_feature.npy"
+            f"/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/{args.dataset_name}/2023-08-10_2023-10-13/second_feature.npy"
         ).tolist()
         self.n_state = len(self.high_level_tech_indicator_list)
         
