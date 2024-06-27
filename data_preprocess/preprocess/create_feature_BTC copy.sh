@@ -1,4 +1,4 @@
-symbol = "BTCUSDT"
+symbol = "ETHUSDT"
 start_date = "2023-08-10"
 end_date = "2023-10-13"
 

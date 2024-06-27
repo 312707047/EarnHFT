@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 設定資料目錄和日誌檔案目錄
-DATA_DIR="preprocess/merge/BTCUSDT"
+DATA_DIR="preprocess/merge/ETHUSDT"
 LOG_DIR="ic_analysis/log"
 SCRIPT="ic_analysis/calculate_ic.py"
 
@@ -16,6 +16,6 @@ for SUBDIR in $DATA_DIR/*; do
         DIR_NAME=$(basename $SUBDIR)
         
         # 執行 Python 腳本並將輸出重定向到相應的日誌檔案
-        nohup python $SCRIPT --data_path "$SUBDIR/df.feather" > "$LOG_DIR/BTCUSDT_${DIR_NAME}.log" 2>&1 &
+        nohup python $SCRIPT --data_path "$SUBDIR/df.feather" > "$LOG_DIR/ETHUSDT_${DIR_NAME}.log" 2>&1 &
     fi
 done

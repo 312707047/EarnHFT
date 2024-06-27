@@ -292,7 +292,7 @@ class DQN(object):
         self.train_data_path = args.train_data_path
         self.chunk_num = 14400
 
-        self.tech_indicator_list = np.load("/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/BTCUSDT/2023-08-10_2023-10-13/second_feature.npy").tolist()
+        self.tech_indicator_list = np.load("/mnt/sda1/novis/Projects/EarnHFT/data_preprocess/ic_analysis/feature_analysis/ETHUSDT/2023-08-10_2023-08-12/second_feature.npy").tolist()
 
         self.n_state = len(self.tech_indicator_list)
         # network & loss function

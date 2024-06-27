@@ -9,8 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--data_path",
     type=str,
-    default=
-    "preprocess/merge/BTCUSDT/2023-10-08-2023-10-18/df.feather",
+    default="preprocess/merge/BTCUSDT/2023-10-08-2023-10-18/df.feather",
     help="the path of storing the data")
 
 parser.add_argument("--save_path",
